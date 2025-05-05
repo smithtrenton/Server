@@ -118,7 +118,7 @@ class World {
     private static readonly TICKRATE: number = 600; // 0.6s / 600ms
 
     private static readonly INV_STOCKRATE: number = 100; // 1m
-    private static readonly AFK_EVENTRATE: number = 500; // 5m
+    private static readonly AFK_EVENTRATE: number = 1; // 5m
     private static readonly PLAYER_SAVERATE: number = 1500; // 15m
     private static readonly PLAYER_COORDLOGRATE: number = 50; // 30s
 
@@ -614,7 +614,7 @@ class World {
                 if (this.currentTick % World.AFK_EVENTRATE === 0) {
                     // (normal) 1/12 chance every 5 minutes of setting an afk event state (even distrubution 60/5)
                     // (afk) double the chance?
-                    player.afkEventReady = Math.random() < (player.zonesAfk() ? 0.1666 : 0.0833);
+                    player.afkEventReady = true;
                 }
 
                 if (isClientConnected(player) && player.decodeIn()) {

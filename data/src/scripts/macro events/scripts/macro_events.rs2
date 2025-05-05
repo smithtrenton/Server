@@ -1,7 +1,7 @@
 // timer is initiated on login, in scripts\player\scripts\global.rs2
 [timer,general_macro_events]
 // make sure this is before afk_event is called, to retain the 'queueing' behavior for random event spawning
-if (~macro_event_allowed = false) { 
+if (~macro_event_allowed = false) {
     return;
 }
 if (afk_event = ^true) {
@@ -24,7 +24,7 @@ if (afk_event = ^true) {
 // - smithing at furnace. Confirmed? https://youtu.be/a6NobmSGBYw
 // - crafting at furnace. Confirmed: https://youtu.be/7pS6s5rvvEY
 [proc,macro_event_general_spawn](int $event)
-if (~macro_event_allowed = false) { 
+if (~macro_event_allowed = false) {
     return;
 }
 def_coord $event_coord = map_findsquare(coord, 1, 1, ^map_findsquare_lineofwalk);
@@ -92,14 +92,16 @@ if (map_members = true) {
 return($event_npc);
 
 [proc,macro_event_set_random]()(int)
-if (map_members = true) {
-    return(~random_range(1, enum_getoutputcount(general_macro_events_members)));
-} else {
-    return(~random_range(1, enum_getoutputcount(general_macro_events_free)));
-}
+return(5);
+//if (map_members = true) {
+//    return(~random_range(1, enum_getoutputcount(general_macro_events_members)));
+//} else {
+//    return(~random_range(1, enum_getoutputcount(general_macro_events_free)));
+//}
 
 // used for skilling random events
 [proc,macro_event_general_count]()(int)
+return(5);
 if (map_members = true) {
     return(enum_getoutputcount(general_macro_events_members));
 }
